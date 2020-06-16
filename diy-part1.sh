@@ -14,6 +14,9 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
+# update default ip address
+sed -i s@192.168.1.1@10.3.2.1@g package/base-files/files/bin/config_generate
+
 # add openclash
 mkdir package/luci-app-openclash
 cd package/luci-app-openclash
@@ -23,3 +26,4 @@ git config core.sparsecheckout true
 echo "luci-app-openclash" >> .git/info/sparse-checkout
 git pull origin master
 git branch --set-upstream-to=origin/master master
+
